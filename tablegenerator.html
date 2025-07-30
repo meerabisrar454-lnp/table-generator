@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Table Generator App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .input-group {
+      margin: 20px 0;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 100px;
+      margin: 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      margin: 30px auto;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #555;
+    }
+
+    td {
+      padding: 10px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Table Generator App</h1>
+
+  <div class="input-group">
+    <label>Rows: <input type="number" id="rows" min="1" value="3"></label>
+    <label>Columns: <input type="number" id="cols" min="1" value="3"></label>
+    <button onclick="generateTable()">Generate Table</button>
+  </div>
+
+  <div id="tableContainer"></div>
+
+  <script>
+    function generateTable() {
+      const rows = parseInt(document.getElementById("rows").value);
+      const cols = parseInt(document.getElementById("cols").value);
+      const container = document.getElementById("tableContainer");
+
+      let html = "<table>";
+      for (let i = 0; i < rows; i++) {
+        html += "<tr>";
+        for (let j = 0; j < cols; j++) {
+          html += `<td>Row ${i + 1}, Col ${j + 1}</td>`;
+        }
+        html += "</tr>";
+      }
+      html += "</table>";
+
+      container.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
